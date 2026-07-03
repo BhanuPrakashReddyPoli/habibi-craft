@@ -22,6 +22,7 @@ import {
   Star,
   Quote,
   Send,
+  ArrowRight,
 } from "lucide-react";
 
 const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
