@@ -1,12 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  AnimatePresence,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   Menu as MenuIcon,
   X,
@@ -26,14 +20,30 @@ import {
 } from "lucide-react";
 
 const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" {...props}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
     <rect x="3" y="3" width="18" height="18" rx="5" />
     <circle cx="12" cy="12" r="4" />
     <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
   </svg>
 );
 const Facebook = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" {...props}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
   </svg>
 );
@@ -43,16 +53,17 @@ const Twitter = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-import hero1 from "@/assets/hero-1.jpg";
+import hero1 from "@/assets/Logo.png";
 import hero2 from "@/assets/hero-2.jpg";
 import hero3 from "@/assets/hero-3.jpg";
 import about1 from "@/assets/about-1.jpg";
 import menuBucket from "@/assets/menu-bucket.jpg";
+import menuCombo from "@/assets/menu-combo.jpg";
 import menuBurger from "@/assets/menu-burger.jpg";
 import menuWrap from "@/assets/menu-wrap.jpg";
 import menuWings from "@/assets/menu-wings.jpg";
 import menuMeal from "@/assets/menu-meal.jpg";
-import gal1 from "@/assets/gallery-1.jpg";
+import gal1 from "@/assets/entrance.jpg";
 import gal2 from "@/assets/gallery-2.jpg";
 import gal3 from "@/assets/gallery-3.jpg";
 import gal4 from "@/assets/gallery-4.jpg";
@@ -63,10 +74,16 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
+        // Open Graph Image
+        // This image is shown when someone shares your website link.
         property: "og:image",
-        content: "https://id-preview--0bc39cb3-9425-4318-9ecd-f84daca4eecd.lovable.app" + hero1,
+
+        // URL of the preview image
+        content: hero1,
       },
     ],
+
+    // Tell search engines which URL is the original page
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
       {
@@ -78,8 +95,7 @@ export const Route = createFileRoute("/")({
           servesCuisine: ["Fried Chicken", "Burgers", "Wraps"],
           priceRange: "$$",
           image: hero1,
-          description:
-            "Cinematic hand-crafted fried chicken. Every bite worth craving.",
+          description: "Cinematic hand-crafted fried chicken. Every bite worth craving.",
         }),
       },
     ],
@@ -87,8 +103,9 @@ export const Route = createFileRoute("/")({
   component: LandingPage,
 });
 
-const SWIGGY_URL = "https://www.swiggy.com";
-const ZOMATO_URL = "https://www.zomato.com";
+const SWIGGY_URL =
+  "https://www.swiggy.com/city/bangalore/habibi-fried-chicken-koramangala-rest1283797";
+const ZOMATO_URL = "https://link.zomato.com/xqzv/rshare?id=12877203430563735";
 
 /* -------------------------------------------------------------------------- */
 /*  Reusable pieces                                                            */
@@ -349,7 +366,7 @@ function Hero() {
                   src={f.src}
                   alt=""
                   aria-hidden="true"
-                  className={`h-full w-full object-cover ${f.kb}`}
+                  className={`h-full w-full object-contain ${f.kb}`}
                 />
               </motion.div>
             ) : null,
@@ -401,7 +418,7 @@ function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.05, duration: 1.1, ease: [0.2, 0.8, 0.2, 1] }}
-          className="text-display mt-6 text-[clamp(3rem,10vw,8.5rem)] text-ivory"
+          className="text-display mt-6 text-[clamp(2rem,6vw,5rem)] text-ivory"
         >
           Crispy. Juicy.
           <br />
@@ -414,8 +431,8 @@ function Hero() {
           transition={{ delay: 1.35, duration: 0.9 }}
           className="mt-6 max-w-xl text-base md:text-lg text-ivory/75 leading-relaxed"
         >
-          Hand-breaded, small-batch fried chicken crafted with signature spices
-          and premium ingredients. Every bite worth craving.
+          Hand-breaded, small-batch fried chicken crafted with signature spices and premium
+          ingredients. Every bite worth craving.
         </motion.p>
 
         <motion.div
@@ -423,7 +440,9 @@ function Hero() {
           animate="show"
           variants={{
             hidden: {},
-            show: { transition: { staggerChildren: 0.12, delayChildren: 1.55 } },
+            show: {
+              transition: { staggerChildren: 0.12, delayChildren: 1.55 },
+            },
           }}
           className="mt-10 flex flex-wrap items-center gap-4"
         >
@@ -472,12 +491,12 @@ function Hero() {
 
 function Marquee() {
   const items = [
-    "Hand-Breaded Daily",
-    "Signature Spice Blend",
-    "24-Hour Buttermilk Brine",
-    "Sourced Fresh",
+    "Golden Crispy Finish",
+    "Crispy Every Bite",
+    "Premium Fresh Chicken",
+    "Always Served Hot",
     "Cooked to Order",
-    "Bold. Crispy. Juicy.",
+    "Pure Chicken. Pure Flavor",
   ];
   const line = [...items, ...items];
   return (
@@ -486,7 +505,7 @@ function Marquee() {
         {line.map((t, i) => (
           <span
             key={i}
-            className="mx-8 inline-flex items-center gap-8 text-display text-2xl md:text-4xl text-ivory/85"
+            className="mx-8 inline-flex items-center gap-8 text-display text-xl md:text-2xl text-ivory/85"
           >
             {t}
             <Sparkles className="h-4 w-4 text-gold shrink-0" />
@@ -504,10 +523,22 @@ function Marquee() {
 
 function About() {
   const pillars = [
-    { t: "Our Story", d: "Born from a family recipe passed down three generations, refined in a modern kitchen." },
-    { t: "Quality Ingredients", d: "Free-range chicken, small-batch spices, cold-pressed oils. Nothing else." },
-    { t: "Freshly Prepared", d: "Every piece hand-breaded to order. No shortcuts. No compromises." },
-    { t: "Signature Taste", d: "A 27-spice blend, brined 24 hours, pressure-cooked to golden perfection." },
+    {
+      t: "Our Story",
+      d: "Born from a family recipe passed down three generations, refined in a modern kitchen.",
+    },
+    {
+      t: "Quality Ingredients",
+      d: "Free-range chicken, small-batch spices, cold-pressed oils. Nothing else.",
+    },
+    {
+      t: "Freshly Prepared",
+      d: "Every piece hand-breaded to order. No shortcuts. No compromises.",
+    },
+    {
+      t: "Signature Taste",
+      d: "A 27-spice blend, brined 24 hours, pressure-cooked to golden perfection.",
+    },
   ];
   return (
     <section id="about" className="relative py-28 md:py-40 ambient-radial">
@@ -538,13 +569,14 @@ function About() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-display mt-5 text-[clamp(2.2rem,5vw,4rem)] text-ivory">
-              Fried chicken, elevated to an <span className="text-gradient-gold italic">art form.</span>
+              Fried chicken, elevated to an{" "}
+              <span className="text-gradient-gold italic">art form.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-6 max-w-xl text-lg text-ivory/70 leading-relaxed">
-              At Habibi, we treat fried chicken like fine dining. Slow-brined,
-              hand-breaded, and cooked in small batches — the way it should be.
+              At Habibi, we treat fried chicken like fine dining. Slow-brined, hand-breaded, and
+              cooked in small batches — the way it should be.
             </p>
           </Reveal>
 
@@ -569,12 +601,42 @@ function About() {
 /* -------------------------------------------------------------------------- */
 
 const MENU_ITEMS = [
-  { img: menuBucket, name: "Signature Bucket", desc: "12 pieces of our hand-breaded, 27-spice crispy chicken.", price: "₹ 749" },
-  { img: menuBurger, name: "Habibi Burger", desc: "Crispy chicken thigh, signature sauce, toasted brioche.", price: "₹ 249" },
-  { img: menuWings, name: "Fire Wings", desc: "Hot-honey glazed wings with a slow-burning kick.", price: "₹ 329" },
-  { img: menuWrap, name: "Shawarma Wrap", desc: "Charcoal-grilled chicken, garlic tahini, warm pita.", price: "₹ 219" },
-  { img: menuMeal, name: "The Complete Meal", desc: "Broasted chicken, crispy fries, dip & drink.", price: "₹ 429" },
-  { img: menuBucket, name: "Broasted Classic", desc: "Pressure-cooked, golden-crisp, tender on the inside.", price: "₹ 359" },
+  {
+    img: menuBucket,
+    name: "Fried Chicken 2 PC",
+    desc: "Two pieces of crispy perfection",
+    price: "₹ 190",
+  },
+  {
+    img: menuBurger,
+    name: "OG Crunch Burger",
+    desc: "Signature crunch , unforgettable taste.",
+    price: "₹ 250",
+  },
+  {
+    img: menuWings,
+    name: "Garlic crispy chicken wrap",
+    desc: "Crispy chicken, creamy garlic, fresh wrap",
+    price: "₹ 250",
+  },
+  {
+    img: menuWrap,
+    name: "Chicken popcorn loaded fries",
+    desc: "A loaded feast of fries and chicken popcorn.",
+    price: "₹ 260",
+  },
+  {
+    img: menuMeal,
+    name: "Churros",
+    desc: "Warm, crunchy, and perfectly sweet.",
+    price: "₹ 120",
+  },
+  {
+    img: menuCombo,
+    name: "Chicken fillet burger combo",
+    desc: "The perfect cmbo for your cravings.",
+    price: "₹ 345",
+  },
 ];
 
 function Menu() {
@@ -583,7 +645,9 @@ function Menu() {
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
-            <Reveal><SectionEyebrow>Signature Menu</SectionEyebrow></Reveal>
+            <Reveal>
+              <SectionEyebrow>Signature Menu</SectionEyebrow>
+            </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-display mt-4 text-[clamp(2.2rem,5.5vw,4.5rem)] text-ivory">
                 Crafted <span className="text-gradient-gold italic">to crave.</span>
@@ -592,8 +656,8 @@ function Menu() {
           </div>
           <Reveal delay={0.2}>
             <p className="max-w-md text-ivory/65">
-              A curated selection of our house favorites. Each item made-to-order,
-              in small batches, the way real food is meant to be.
+              A curated selection of our house favorites. Each item made-to-order, in small batches,
+              the way real food is meant to be.
             </p>
           </Reveal>
         </div>
@@ -622,14 +686,20 @@ function Menu() {
                   <div className="mt-5 flex gap-2">
                     <a
                       href={SWIGGY_URL}
-                      target="_blank" rel="noopener noreferrer"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1 rounded-full btn-gold py-2.5 text-center text-xs font-semibold uppercase tracking-wider"
-                    >Swiggy</a>
+                    >
+                      Swiggy
+                    </a>
                     <a
                       href={ZOMATO_URL}
-                      target="_blank" rel="noopener noreferrer"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1 rounded-full btn-ghost-gold py-2.5 text-center text-xs font-semibold uppercase tracking-wider"
-                    >Zomato</a>
+                    >
+                      Zomato
+                    </a>
                   </div>
                 </div>
               </article>
@@ -646,12 +716,32 @@ function Menu() {
 /* -------------------------------------------------------------------------- */
 
 const WHY = [
-  { Icon: ChefHat, t: "Freshly Prepared", d: "Made-to-order, never pre-cooked." },
-  { Icon: Award, t: "Premium Quality", d: "Free-range, ethically sourced chicken." },
+  {
+    Icon: ChefHat,
+    t: "Freshly Prepared",
+    d: "Made-to-order, never pre-cooked.",
+  },
+  {
+    Icon: Award,
+    t: "Premium Quality",
+    d: "Free-range, ethically sourced chicken.",
+  },
   { Icon: Flame, t: "Crispy Every Time", d: "The perfect crunch, guaranteed." },
-  { Icon: Truck, t: "Fast Delivery", d: "Hot at your door via Swiggy & Zomato." },
-  { Icon: Sparkles, t: "Signature Recipes", d: "27-spice blend, brined 24 hours." },
-  { Icon: Timer, t: "Consistently Perfect", d: "Same craft, every single time." },
+  {
+    Icon: Truck,
+    t: "Fast Delivery",
+    d: "Hot at your door via Swiggy & Zomato.",
+  },
+  {
+    Icon: Sparkles,
+    t: "Signature Recipes",
+    d: "27-spice blend, brined 24 hours.",
+  },
+  {
+    Icon: Timer,
+    t: "Consistently Perfect",
+    d: "Same craft, every single time.",
+  },
 ];
 
 function WhyUs() {
@@ -659,7 +749,9 @@ function WhyUs() {
     <section className="relative py-28 md:py-36 ambient-radial">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <Reveal><SectionEyebrow>Why Habibi</SectionEyebrow></Reveal>
+          <Reveal>
+            <SectionEyebrow>Why Habibi</SectionEyebrow>
+          </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-display mt-4 text-[clamp(2.2rem,5vw,4rem)] text-ivory">
               Details you can <span className="text-gradient-gold italic">taste.</span>
@@ -703,10 +795,12 @@ function Gallery() {
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <div>
-            <Reveal><SectionEyebrow>Visual Journal</SectionEyebrow></Reveal>
+            <Reveal>
+              <SectionEyebrow>Visual Journal</SectionEyebrow>
+            </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-display mt-4 text-[clamp(2.2rem,5.5vw,4.5rem)] text-ivory">
-                Inside the <span className="text-gradient-gold italic">Habibi</span> kitchen.
+                Inside the <span className="text-gradient-gold italic">Habibi</span>
               </h2>
             </Reveal>
           </div>
@@ -723,7 +817,9 @@ function Gallery() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 glass-panel rounded-2xl flex items-end p-6">
-                  <span className="text-xs uppercase tracking-[0.35em] text-gold">Habibi · No. 0{i + 1}</span>
+                  <span className="text-xs uppercase tracking-[0.35em] text-gold">
+                    Habibi · No. 0{i + 1}
+                  </span>
                 </div>
               </div>
             </Reveal>
@@ -740,22 +836,18 @@ function Gallery() {
 
 const LOCATIONS = [
   {
-    name: "Habibi · Bandra",
-    address: "Linking Road, Bandra West, Mumbai 400050",
-    hours: "11:00 AM — 1:00 AM",
-    maps: "https://maps.google.com/?q=Bandra+West+Mumbai",
+    name: "Koramangala · Bengaluru",
+    address:
+      "No 28,Ground Floor, Koramangala Industrial Layout, 5th Block, Koramangala, Bengaluru, Karnataka 560095",
+    hours: "11:00 AM — 11:00 PM",
+    maps: "https://maps.app.goo.gl/rjhK3v1gkZAVYuKSA",
   },
   {
-    name: "Habibi · Koramangala",
-    address: "80ft Road, 5th Block, Koramangala, Bengaluru 560095",
-    hours: "11:00 AM — 12:00 AM",
-    maps: "https://maps.google.com/?q=Koramangala+Bengaluru",
-  },
-  {
-    name: "Habibi · Connaught Place",
-    address: "M-Block, Connaught Place, New Delhi 110001",
-    hours: "12:00 PM — 12:00 AM",
-    maps: "https://maps.google.com/?q=Connaught+Place+Delhi",
+    name: "HRBR Layout · Bengaluru",
+    address:
+      "CLUB HOUSE, 418, 5th Main Rd, HRBR Layout 2nd Block, HRBR Layout, Kalyan Nagar, Bengaluru, Karnataka 560043",
+    hours: "11:00 AM — 11:00 PM",
+    maps: "https://maps.app.goo.gl/47VGZEBcyz6dgrto9",
   },
 ];
 
@@ -764,10 +856,12 @@ function Locations() {
     <section id="locations" className="relative py-28 md:py-36 ambient-radial">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="mb-14">
-          <Reveal><SectionEyebrow>Find Us</SectionEyebrow></Reveal>
+          <Reveal>
+            <SectionEyebrow>Find Us</SectionEyebrow>
+          </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-display mt-4 text-[clamp(2.2rem,5vw,4rem)] text-ivory">
-              Three cities. One <span className="text-gradient-gold italic">obsession.</span>
+              <span className="text-gradient-gold italic"></span>
             </h2>
           </Reveal>
         </div>
@@ -777,7 +871,9 @@ function Locations() {
               <div className="group glass-panel rounded-2xl p-8 h-full flex flex-col transition-all duration-500 hover:-translate-y-1 hover:border-gold/40">
                 <div className="flex items-center gap-2">
                   <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_theme(colors.emerald.400)]" />
-                  <span className="text-[0.65rem] uppercase tracking-[0.3em] text-emerald-300/90">Delivery Available</span>
+                  <span className="text-[0.65rem] uppercase tracking-[0.3em] text-emerald-300/90">
+                    Delivery Available
+                  </span>
                 </div>
                 <h3 className="text-display mt-4 text-2xl text-ivory">{loc.name}</h3>
                 <p className="mt-3 flex items-start gap-2 text-sm text-ivory/70">
@@ -790,7 +886,8 @@ function Locations() {
                 </p>
                 <a
                   href={loc.maps}
-                  target="_blank" rel="noopener noreferrer"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-gold group-hover:gap-3 transition-all"
                 >
                   Open in Maps <ArrowRight className="h-4 w-4" />
@@ -829,7 +926,9 @@ function Order() {
     <section id="order" className="relative py-28 md:py-36 bg-charcoal">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <Reveal><SectionEyebrow>Order Online</SectionEyebrow></Reveal>
+          <Reveal>
+            <SectionEyebrow>Order Online</SectionEyebrow>
+          </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-display mt-4 text-[clamp(2.2rem,5vw,4rem)] text-ivory">
               Delivered <span className="text-gradient-gold italic">hot.</span> Everywhere.
@@ -841,13 +940,20 @@ function Order() {
             <Reveal key={c.name} delay={i * 0.1}>
               <a
                 href={c.href}
-                target="_blank" rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative block overflow-hidden rounded-3xl glass-panel p-10 md:p-12 transition-all duration-500 hover:-translate-y-2 hover:border-gold/40"
               >
-                <div className={`absolute -top-24 -right-24 h-64 w-64 rounded-full bg-gradient-to-br ${c.color} opacity-20 blur-3xl transition-opacity group-hover:opacity-40`} />
+                <div
+                  className={`absolute -top-24 -right-24 h-64 w-64 rounded-full bg-gradient-to-br ${c.color} opacity-20 blur-3xl transition-opacity group-hover:opacity-40`}
+                />
                 <div className="relative">
-                  <span className="text-[0.65rem] uppercase tracking-[0.35em] text-gold">{c.tag}</span>
-                  <h3 className={`text-display mt-4 text-5xl md:text-6xl bg-gradient-to-r ${c.color} bg-clip-text text-transparent`}>
+                  <span className="text-[0.65rem] uppercase tracking-[0.35em] text-gold">
+                    {c.tag}
+                  </span>
+                  <h3
+                    className={`text-display mt-4 text-5xl md:text-6xl bg-gradient-to-r ${c.color} bg-clip-text text-transparent`}
+                  >
                     {c.name}
                   </h3>
                   <p className="mt-4 max-w-md text-ivory/70 leading-relaxed">{c.desc}</p>
@@ -872,10 +978,26 @@ function Order() {
 /* -------------------------------------------------------------------------- */
 
 const REVIEWS = [
-  { name: "Aisha K.", role: "Food Blogger, Mumbai", q: "The crispiest, juiciest chicken I've had in India. Full stop." },
-  { name: "Rohan M.", role: "Regular since 2020", q: "You can taste the care in every single piece. Habibi is on another level." },
-  { name: "Priya S.", role: "Bengaluru", q: "That first bite — impossibly crunchy, then juicy. Cinematic." },
-  { name: "Kabir A.", role: "New Delhi", q: "Fried chicken has a new benchmark, and it's called Habibi." },
+  {
+    name: "Lakshman S",
+    role: "Food Blogger, Banglore",
+    q: "The Burgers here are just outstanding!! French Fries quantity and quality are too good!! It's soo addictive.. Price is also reasonable!!",
+  },
+  {
+    name: "Rohan M.",
+    role: "Regular since 2025",
+    q: "You can taste the care in every single piece. Habibi is on another level.",
+  },
+  {
+    name: "Priya S.",
+    role: "Bengaluru",
+    q: "That first bite — impossibly crunchy, then juicy. Cinematic.",
+  },
+  {
+    name: "Kabir A.",
+    role: "New Delhi",
+    q: "Fried chicken has a new benchmark, and it's called Habibi.",
+  },
 ];
 
 function Testimonials() {
@@ -887,7 +1009,9 @@ function Testimonials() {
   return (
     <section className="relative py-28 md:py-36 ambient-radial">
       <div className="mx-auto max-w-4xl px-5 md:px-10 text-center">
-        <Reveal><SectionEyebrow>What They're Saying</SectionEyebrow></Reveal>
+        <Reveal>
+          <SectionEyebrow>What They're Saying</SectionEyebrow>
+        </Reveal>
         <div className="relative mt-10 h-[280px] md:h-[240px]">
           <AnimatePresence mode="wait">
             <motion.figure
@@ -936,10 +1060,15 @@ function Testimonials() {
 /*  Contact                                                                    */
 /* -------------------------------------------------------------------------- */
 
-const WHATSAPP_NUMBER = "919999999999";
+const WHATSAPP_NUMBER = "7353775688";
 
 function Contact() {
-  const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -957,7 +1086,9 @@ function Contact() {
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <div>
-            <Reveal><SectionEyebrow>Get in Touch</SectionEyebrow></Reveal>
+            <Reveal>
+              <SectionEyebrow>Get in Touch</SectionEyebrow>
+            </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-display mt-4 text-[clamp(2.2rem,5vw,4rem)] text-ivory">
                 We'd love to <span className="text-gradient-gold italic">hear from you.</span>
@@ -965,16 +1096,16 @@ function Contact() {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="mt-6 max-w-md text-ivory/65">
-                Feedback, catering, or just a warm hello — drop us a message and
-                we'll get back within 24 hours.
+                Feedback, Complaint? or just a warm hello — drop us a message and we'll get back
+                within 24 hours.
               </p>
             </Reveal>
 
             <div className="mt-10 space-y-5">
               {[
-                { Icon: MapPin, label: "Linking Road, Bandra West, Mumbai" },
-                { Icon: Phone, label: "+91 99999 99999" },
-                { Icon: Clock, label: "Daily · 11:00 AM — 1:00 AM" },
+                { Icon: Phone, label: "No 28,Ground Floor, Koramangala Industrial Layout" },
+                { Icon: Phone, label: "+91 9742777705" },
+                { Icon: Clock, label: "All Days · 10:00 AM — 09:00 PM" },
               ].map(({ Icon, label }) => (
                 <div key={label} className="flex items-center gap-4 text-ivory/80">
                   <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 bg-gold/5">
@@ -989,7 +1120,7 @@ function Contact() {
               {[Instagram, Facebook, Twitter].map((I, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href="https://www.instagram.com/habibifriedchicken?igsh=MWlxd2Rld3M3YTVoeQ=="
                   aria-label="Social link"
                   className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/25 text-ivory/70 hover:text-gold hover:border-gold transition-colors"
                 >
@@ -1015,17 +1146,13 @@ function Contact() {
                       required
                       type={f.type}
                       value={form[f.k as keyof typeof form]}
-                      onChange={(e) =>
-                        setForm({ ...form, [f.k]: e.target.value })
-                      }
+                      onChange={(e) => setForm({ ...form, [f.k]: e.target.value })}
                       className="mt-2 w-full rounded-xl border border-white/10 bg-charcoal/60 px-4 py-3 text-ivory placeholder:text-ivory/30 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30 transition"
                     />
                   </label>
                 ))}
                 <label className="block">
-                  <span className="text-xs uppercase tracking-[0.3em] text-ivory/60">
-                    Message
-                  </span>
+                  <span className="text-xs uppercase tracking-[0.3em] text-ivory/60">Message</span>
                   <textarea
                     required
                     rows={4}
@@ -1067,7 +1194,7 @@ function Footer() {
           <div className="md:col-span-2">
             <Wordmark />
             <p className="mt-5 max-w-sm text-sm text-ivory/60 leading-relaxed">
-              Hand-crafted fried chicken, made the way it should be. Since 2018.
+              Hand-crafted fried chicken, made the way it should be. Since 2025.
             </p>
             <div className="mt-6 flex gap-3">
               {[Instagram, Facebook, Twitter].map((I, i) => (
@@ -1087,7 +1214,9 @@ function Footer() {
             <ul className="mt-5 space-y-3 text-sm text-ivory/70">
               {NAV_LINKS.map((l) => (
                 <li key={l.href}>
-                  <a href={l.href} className="hover:text-gold transition">{l.label}</a>
+                  <a href={l.href} className="hover:text-gold transition">
+                    {l.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -1095,9 +1224,7 @@ function Footer() {
           <div>
             <h4 className="text-xs uppercase tracking-[0.3em] text-gold">Hours</h4>
             <ul className="mt-5 space-y-3 text-sm text-ivory/70">
-              <li>Mon — Thu · 11 AM – 12 AM</li>
-              <li>Fri — Sat · 11 AM – 1 AM</li>
-              <li>Sunday · 12 PM – 12 AM</li>
+              <li>Mon — Thu · 10 AM – 11 AM</li>
             </ul>
           </div>
         </div>
