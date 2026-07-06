@@ -95,7 +95,7 @@ export const Route = createFileRoute("/")({
           servesCuisine: ["Fried Chicken", "Burgers", "Wraps"],
           priceRange: "$$",
           image: hero1,
-          description: "Cinematic hand-crafted fried chicken. Every bite worth craving.",
+          description: "Cinematic hand crafted fried chicken. Every bite worth craving.",
         }),
       },
     ],
@@ -411,7 +411,7 @@ function Hero() {
           transition={{ delay: 0.8, duration: 1, ease: [0.2, 0.8, 0.2, 1] }}
           className="max-w-3xl"
         >
-          <SectionEyebrow>Since 2018 · Signature Recipes</SectionEyebrow>
+          <SectionEyebrow>Since 2025 · Signature Recipes</SectionEyebrow>
         </motion.div>
 
         <motion.h1
@@ -431,7 +431,7 @@ function Hero() {
           transition={{ delay: 1.35, duration: 0.9 }}
           className="mt-6 max-w-xl text-base md:text-lg text-ivory/75 leading-relaxed"
         >
-          Hand-breaded, small-batch fried chicken crafted with signature spices and premium
+          Hand breaded, small batch fried chicken crafted with signature spices and premium
           ingredients. Every bite worth craving.
         </motion.p>
 
@@ -849,6 +849,19 @@ const LOCATIONS = [
     hours: "11:00 AM — 11:00 PM",
     maps: "https://maps.app.goo.gl/47VGZEBcyz6dgrto9",
   },
+  {
+    name: "Indranagar · (cloud Kitchen) Bengaluru",
+    address: "Indiranagar, 100 Feet Rd, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560008",
+    hours: "11:00 AM — 11:00 PM",
+    maps: "",
+  },
+  {
+    name: "Sarjapura· (cloud Kitchen) Bengaluru",
+    address:
+      "1ST FLOOR, shree complex, 65/1a, Sarjapur Main Rd, Kaikondrahalli, Bengaluru, Karnataka 560035	",
+    hours: "11:00 AM — 11:00 PM",
+    maps: "https://share.google/zYY7Az0H11NgJzt9M",
+  },
 ];
 
 function Locations() {
@@ -995,7 +1008,7 @@ const REVIEWS = [
   },
   {
     name: "Kabir A.",
-    role: "New Delhi",
+    role: "Bengaluru",
     q: "Fried chicken has a new benchmark, and it's called Habibi.",
   },
 ];
@@ -1060,7 +1073,7 @@ function Testimonials() {
 /*  Contact                                                                    */
 /* -------------------------------------------------------------------------- */
 
-const WHATSAPP_NUMBER = "7353775688";
+const WHATSAPP_NUMBER = "9742777705";
 
 function Contact() {
   const [form, setForm] = useState({
@@ -1194,7 +1207,7 @@ function Footer() {
           <div className="md:col-span-2">
             <Wordmark />
             <p className="mt-5 max-w-sm text-sm text-ivory/60 leading-relaxed">
-              Hand-crafted fried chicken, made the way it should be. Since 2025.
+              Hand crafted fried chicken, made the way it should be. Since 2025.
             </p>
             <div className="mt-6 flex gap-3">
               {[Instagram, Facebook, Twitter].map((I, i) => (
