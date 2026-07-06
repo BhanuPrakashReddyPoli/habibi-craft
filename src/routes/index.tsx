@@ -1237,7 +1237,7 @@ function Footer() {
           <div>
             <h4 className="text-xs uppercase tracking-[0.3em] text-gold">Hours</h4>
             <ul className="mt-5 space-y-3 text-sm text-ivory/70">
-              <li>Mon — Thu · 10 AM – 11 AM</li>
+              <li>ALL DAYS · 10 AM – 11 PM</li>
             </ul>
           </div>
         </div>
