@@ -609,7 +609,7 @@ const MENU_ITEMS = [
   },
   {
     img: menuBurger,
-    name: "OG Crunch Burger",
+    name: "OG Crunch Combo",
     desc: "Signature crunch , unforgettable taste.",
     price: "₹ 250",
   },
