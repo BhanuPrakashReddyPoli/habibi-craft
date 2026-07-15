@@ -52,8 +52,8 @@ const Twitter = (props: React.SVGProps<SVGSVGElement>) => (
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
   </svg>
 );
-
-import hero1 from "@/assets/Logo.png";
+import logo from "@/assets/logo.png";
+import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
 import hero3 from "@/assets/hero-3.jpg";
 import about1 from "@/assets/about-1.jpg";
@@ -115,15 +115,26 @@ function Wordmark({ className = "" }: { className?: string }) {
   return (
     <a
       href="#home"
-      className={`inline-flex items-baseline gap-[0.35em] leading-none ${className}`}
+      className={`inline-flex items-center gap-3 leading-none ${className}`}
       aria-label="Habibi Fried Chicken — Home"
     >
-      <span className="text-display text-gradient-gold text-2xl md:text-[1.6rem] tracking-tight">
-        Habibi
-      </span>
-      <span className="hidden sm:inline text-[0.6rem] uppercase tracking-[0.35em] text-ivory/60 font-medium">
-        Fried Chicken
-      </span>
+      {/* Round Logo */}
+      <img
+        src={logo}
+        alt="Habibi Fried Chicken Logo"
+        className="h-24 w-24 rounded-full object-contain"
+      />
+
+      {/* Brand Name */}
+      <div className="flex items-center gap-2">
+        <span className="text-display text-gradient-gold text-2xl md:text-[1.7rem] tracking-tight">
+          Habibi
+        </span>
+
+        <span className="text-[0.72rem] md:text-[0.75rem] uppercase tracking-[0.32em] text-ivory/70 font-semibold whitespace-nowrap">
+          Fried Chicken
+        </span>
+      </div>
     </a>
   );
 }
@@ -319,8 +330,8 @@ function Nav() {
 /* -------------------------------------------------------------------------- */
 
 const HERO_FRAMES = [
-  { src: hero1, kb: "ken-burns-a" },
   { src: hero2, kb: "ken-burns-b" },
+  { src: hero1, kb: "ken-burns-b" },
   { src: hero3, kb: "ken-burns-c" },
 ];
 
@@ -411,7 +422,7 @@ function Hero() {
           transition={{ delay: 0.8, duration: 1, ease: [0.2, 0.8, 0.2, 1] }}
           className="max-w-3xl"
         >
-          <SectionEyebrow>Since 2025 · Signature Recipes</SectionEyebrow>
+          <SectionEyebrow>Since 2026 </SectionEyebrow>
         </motion.div>
 
         <motion.h1
@@ -420,21 +431,21 @@ function Hero() {
           transition={{ delay: 1.05, duration: 1.1, ease: [0.2, 0.8, 0.2, 1] }}
           className="text-display mt-6 text-[clamp(2rem,6vw,5rem)] text-ivory"
         >
-          Crispy. Juicy.
           <br />
-          <span className="text-gradient-gold italic">Unforgettable.</span>
+          <span className="text-gradient-gold italic"></span>
         </motion.h1>
-
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.35, duration: 0.9 }}
           className="mt-6 max-w-xl text-base md:text-lg text-ivory/75 leading-relaxed"
         >
-          Hand breaded, small batch fried chicken crafted with signature spices and premium
-          ingredients. Every bite worth craving.
+          Habibi Fried Chicken is India's answer to the global fried chicken giants, built around
+          the tastes of the Indian consumer. Pioneering the country's first Indian Fried Chicken,
+          Habibi combines world-class quality and crunch with bold Indian flavours and spices. By
+          blending global QSR standards with local taste preferences, Habibi is redefining the fried
+          chicken category and building India's next iconic homegrown fried chicken brand.
         </motion.p>
-
         <motion.div
           initial="hidden"
           animate="show"
