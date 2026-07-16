@@ -127,13 +127,9 @@ function Wordmark({ className = "" }: { className?: string }) {
 
       {/* Brand Name */}
       <div className="flex items-center gap-2">
-        <span className="text-display text-gradient-gold text-2xl md:text-[1.7rem] tracking-tight">
-          Habibi
-        </span>
+        <span className="text-display text-gradient-gold text-2xl md:text-[1.7rem] tracking-tight"></span>
 
-        <span className="text-[0.72rem] md:text-[0.75rem] uppercase tracking-[0.32em] text-ivory/70 font-semibold whitespace-nowrap">
-          Fried Chicken
-        </span>
+        <span className="text-[0.72rem] md:text-[0.75rem] uppercase tracking-[0.32em] text-ivory/70 font-semibold whitespace-nowrap"></span>
       </div>
     </a>
   );
@@ -438,13 +434,16 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.35, duration: 0.9 }}
-          className="mt-6 max-w-xl text-base md:text-lg text-ivory/75 leading-relaxed"
+          className="mt-6 max-w-xl text-base leading-relaxed text-ivory/75 md:text-lg"
         >
-          Habibi Fried Chicken is India's answer to the global fried chicken giants, built around
-          the tastes of the Indian consumer. Pioneering the country's first Indian Fried Chicken,
-          Habibi combines world-class quality and crunch with bold Indian flavours and spices. By
-          blending global QSR standards with local taste preferences, Habibi is redefining the fried
-          chicken category and building India's next iconic homegrown fried chicken brand.
+          <span className="text-display text-gradient-gold text-[1.3em] font-medium">
+            Habibi Fried Chicken
+          </span>{" "}
+          is India's answer to the global fried chicken giants, built around the tastes of the
+          Indian consumer. Pioneering the country's first Indian Fried Chicken, Habibi combines
+          world-class quality and crunch with bold Indian flavours and spices. By blending global
+          QSR standards with local taste preferences, Habibi is redefining the fried chicken
+          category and building India's next iconic homegrown fried chicken brand.
         </motion.p>
         <motion.div
           initial="hidden"
@@ -565,12 +564,12 @@ function About() {
               loading="lazy"
               className="relative aspect-[4/5] w-full rounded-2xl object-cover shadow-2xl"
             />
-            <div className="absolute -bottom-6 -right-6 hidden md:block glass-panel rounded-2xl px-6 py-5">
+            {/* <div className="absolute -bottom-6 -right-6 hidden md:block glass-panel rounded-2xl px-6 py-5">
               <div className="text-display text-4xl text-gradient-gold">27</div>
               <div className="mt-1 text-xs uppercase tracking-widest text-ivory/70">
                 Secret Spices
               </div>
-            </div>
+            </div> */}
           </div>
         </Reveal>
 
@@ -580,8 +579,7 @@ function About() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-display mt-5 text-[clamp(2.2rem,5vw,4rem)] text-ivory">
-              Fried chicken, elevated to an{" "}
-              <span className="text-gradient-gold italic">art form.</span>
+              Fried chicken, elevated to an <span className="text-gradient-gold ">art form.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
@@ -661,7 +659,7 @@ function Menu() {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-display mt-4 text-[clamp(2.2rem,5.5vw,4.5rem)] text-ivory">
-                Crafted <span className="text-gradient-gold italic">to crave.</span>
+                Crafted <span className="text-gradient-gold">to crave.</span>
               </h2>
             </Reveal>
           </div>
@@ -765,7 +763,7 @@ function WhyUs() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-display mt-4 text-[clamp(2.2rem,5vw,4rem)] text-ivory">
-              Details you can <span className="text-gradient-gold italic">taste.</span>
+              Details you can <span className="text-gradient-gold ">taste.</span>
             </h2>
           </Reveal>
         </div>
@@ -811,7 +809,7 @@ function Gallery() {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-display mt-4 text-[clamp(2.2rem,5.5vw,4.5rem)] text-ivory">
-                Inside the <span className="text-gradient-gold italic">Habibi</span>
+                Inside the <span className="text-gradient-gold">Habibi</span>
               </h2>
             </Reveal>
           </div>
@@ -955,7 +953,7 @@ function Order() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="text-display mt-4 text-[clamp(2.2rem,5vw,4rem)] text-ivory">
-              Delivered <span className="text-gradient-gold italic">hot.</span> Everywhere.
+              Delivered <span className="text-gradient-gold">hot.</span> Everywhere.
             </h2>
           </Reveal>
         </div>
@@ -1009,7 +1007,7 @@ const REVIEWS = [
   },
   {
     name: "Rohan M.",
-    role: "Regular since 2025",
+    role: "Regular since 2026",
     q: "You can taste the care in every single piece. Habibi is on another level.",
   },
   {
@@ -1083,8 +1081,9 @@ function Testimonials() {
 /* -------------------------------------------------------------------------- */
 /*  Contact                                                                    */
 /* -------------------------------------------------------------------------- */
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xwvgvrjk";
 
-const WHATSAPP_NUMBER = "9742777705";
+type ContactSubmitStatus = "idle" | "submitting" | "success" | "error";
 
 function Contact() {
   const [form, setForm] = useState({
@@ -1094,61 +1093,142 @@ function Contact() {
     message: "",
   });
 
-  const submit = (e: React.FormEvent) => {
+  const [submitStatus, setSubmitStatus] = useState<ContactSubmitStatus>("idle");
+
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const text =
-      `Hi Habibi! 👋%0A%0A` +
-      `Name: ${form.name}%0A` +
-      `Phone: ${form.phone}%0A` +
-      `Email: ${form.email}%0A%0A` +
-      `${form.message}`;
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
+
+    const trimmedForm = {
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      email: form.email.trim(),
+      message: form.message.trim(),
+    };
+
+    if (!trimmedForm.name || !trimmedForm.phone || !trimmedForm.email || !trimmedForm.message) {
+      setSubmitStatus("error");
+      setSubmitMessage("Please complete all required fields.");
+      return;
+    }
+
+    setSubmitStatus("submitting");
+    setSubmitMessage("");
+
+    try {
+      const submittedAtIndia = new Intl.DateTimeFormat("en-IN", {
+        timeZone: "Asia/Kolkata",
+        dateStyle: "long",
+        timeStyle: "medium",
+      }).format(new Date());
+
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: trimmedForm.name,
+          phone: trimmedForm.phone,
+          email: trimmedForm.email,
+          message: trimmedForm.message,
+          submittedAtIndia,
+          source: "Habibi Fried Chicken Website",
+          _subject: "New Habibi Fried Chicken Website Inquiry",
+        }),
+      });
+
+      if (!response.ok) {
+        const result = await response.json().catch(() => null);
+
+        const formspreeError =
+          result?.errors?.map((error: { message: string }) => error.message).join(", ") ||
+          "Unable to send your message. Please try again.";
+
+        throw new Error(formspreeError);
+      }
+
+      setForm({
+        name: "",
+        phone: "",
+        email: "",
+        message: "",
+      });
+
+      setSubmitStatus("success");
+      setSubmitMessage(
+        "Thank you. Your inquiry has been sent successfully. Our team will contact you shortly.",
+      );
+    } catch (error) {
+      console.error("Habibi inquiry submission failed:", error);
+
+      setSubmitStatus("error");
+      setSubmitMessage(
+        error instanceof Error ? error.message : "Something went wrong. Please try again.",
+      );
+    }
   };
 
   return (
-    <section id="contact" className="relative py-28 md:py-36 bg-charcoal">
+    <section id="contact" className="relative bg-charcoal py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <div>
             <Reveal>
               <SectionEyebrow>Get in Touch</SectionEyebrow>
             </Reveal>
+
             <Reveal delay={0.1}>
               <h2 className="text-display mt-4 text-[clamp(2.2rem,5vw,4rem)] text-ivory">
-                We'd love to <span className="text-gradient-gold italic">hear from you.</span>
+                We'd love to <span className="text-gradient-gold">hear from you.</span>
               </h2>
             </Reveal>
+
             <Reveal delay={0.2}>
               <p className="mt-6 max-w-md text-ivory/65">
-                Feedback, Complaint? or just a warm hello — drop us a message and we'll get back
-                within 24 hours.
+                Feedback, complaints, catering inquiries, or just a warm hello — send us a message
+                and our team will get back to you shortly.
               </p>
             </Reveal>
 
             <div className="mt-10 space-y-5">
               {[
-                { Icon: Phone, label: "No 28,Ground Floor, Koramangala Industrial Layout" },
-                { Icon: Phone, label: "+91 9742777705" },
-                { Icon: Clock, label: "All Days · 10:00 AM — 09:00 PM" },
+                {
+                  Icon: MapPin,
+                  label: "No. 28, Ground Floor, Koramangala Industrial Layout, Bengaluru",
+                },
+                {
+                  Icon: Phone,
+                  label: "+91 70907 99989",
+                },
+                {
+                  Icon: Clock,
+                  label: "Open Daily · 10:00 AM – 09:00 PM",
+                },
               ].map(({ Icon, label }) => (
-                <div key={label} className="flex items-center gap-4 text-ivory/80">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 bg-gold/5">
+                <div key={label} className="flex items-start gap-4 text-ivory/80">
+                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-gold/5">
                     <Icon className="h-4 w-4 text-gold" />
                   </span>
-                  {label}
+
+                  <span className="pt-2 text-sm leading-relaxed">{label}</span>
                 </div>
               ))}
             </div>
 
             <div className="mt-8 flex items-center gap-3">
-              {[Instagram, Facebook, Twitter].map((I, i) => (
+              {[Instagram, Facebook, Twitter].map((SocialIcon, index) => (
                 <a
-                  key={i}
+                  key={index}
                   href="https://www.instagram.com/habibifriedchicken?igsh=MWlxd2Rld3M3YTVoeQ=="
-                  aria-label="Social link"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/25 text-ivory/70 hover:text-gold hover:border-gold transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Habibi Fried Chicken social media"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/25 text-ivory/70 transition-colors hover:border-gold hover:text-gold"
                 >
-                  <I className="h-4 w-4" />
+                  <SocialIcon className="h-4 w-4" />
                 </a>
               ))}
             </div>
@@ -1158,40 +1238,100 @@ function Contact() {
             <form onSubmit={submit} className="glass-panel rounded-3xl p-8 md:p-10">
               <div className="grid gap-5">
                 {[
-                  { k: "name", label: "Name", type: "text" },
-                  { k: "phone", label: "Phone", type: "tel" },
-                  { k: "email", label: "Email", type: "email" },
-                ].map((f) => (
-                  <label key={f.k} className="block">
+                  {
+                    key: "name",
+                    label: "Name",
+                    type: "text",
+                    autoComplete: "name",
+                    placeholder: "Ex: Batman",
+                  },
+                  {
+                    key: "phone",
+                    label: "Phone",
+                    type: "tel",
+                    autoComplete: "tel",
+                    placeholder: "+91 98765 43210",
+                  },
+                  {
+                    key: "email",
+                    label: "Email",
+                    type: "email",
+                    autoComplete: "email",
+                    placeholder: "you@example.com",
+                  },
+                ].map((field) => (
+                  <label key={field.key} className="block">
                     <span className="text-xs uppercase tracking-[0.3em] text-ivory/60">
-                      {f.label}
+                      {field.label}
                     </span>
+
                     <input
                       required
-                      type={f.type}
-                      value={form[f.k as keyof typeof form]}
-                      onChange={(e) => setForm({ ...form, [f.k]: e.target.value })}
-                      className="mt-2 w-full rounded-xl border border-white/10 bg-charcoal/60 px-4 py-3 text-ivory placeholder:text-ivory/30 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30 transition"
+                      name={field.key}
+                      type={field.type}
+                      autoComplete={field.autoComplete}
+                      placeholder={field.placeholder}
+                      value={form[field.key as keyof typeof form]}
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          [field.key]: e.target.value,
+                        })
+                      }
+                      className="mt-2 w-full rounded-xl border border-white/10 bg-charcoal/60 px-4 py-3 text-ivory placeholder:text-ivory/30 transition focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
                     />
                   </label>
                 ))}
+
                 <label className="block">
                   <span className="text-xs uppercase tracking-[0.3em] text-ivory/60">Message</span>
+
                   <textarea
                     required
+                    name="message"
                     rows={4}
+                    placeholder="Tell us how we can help..."
                     value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="mt-2 w-full rounded-xl border border-white/10 bg-charcoal/60 px-4 py-3 text-ivory placeholder:text-ivory/30 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30 transition resize-none"
+                    onChange={(e) =>
+                      setForm({
+                        ...form,
+                        message: e.target.value,
+                      })
+                    }
+                    className="mt-2 w-full resize-none rounded-xl border border-white/10 bg-charcoal/60 px-4 py-3 text-ivory placeholder:text-ivory/30 transition focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
                   />
                 </label>
+
+                {submitMessage && (
+                  <div
+                    role={submitStatus === "error" ? "alert" : "status"}
+                    className={`rounded-xl border px-4 py-3 text-sm leading-relaxed ${
+                      submitStatus === "success"
+                        ? "border-emerald-400/25 bg-emerald-400/10 text-emerald-300"
+                        : "border-red-400/25 bg-red-400/10 text-red-300"
+                    }`}
+                  >
+                    {submitMessage}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="mt-2 inline-flex items-center justify-center gap-3 rounded-full btn-gold px-6 py-4 text-sm font-semibold uppercase tracking-wider"
+                  disabled={submitStatus === "submitting"}
+                  className="btn-gold mt-2 inline-flex items-center justify-center gap-3 rounded-full px-6 py-4 text-sm font-semibold uppercase tracking-wider disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Send via WhatsApp
-                  <Send className="h-4 w-4" />
+                  {submitStatus === "submitting" ? "Sending..." : "Send Message"}
+
+                  {submitStatus === "submitting" ? (
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-charcoal/60 border-t-transparent" />
+                  ) : (
+                    <Send className="h-4 w-4" />
+                  )}
                 </button>
+
+                <p className="text-center text-[10px] leading-relaxed text-ivory/40">
+                  By submitting this form, you agree to be contacted regarding your inquiry.
+                </p>
               </div>
             </form>
           </Reveal>
@@ -1218,7 +1358,7 @@ function Footer() {
           <div className="md:col-span-2">
             <Wordmark />
             <p className="mt-5 max-w-sm text-sm text-ivory/60 leading-relaxed">
-              Hand crafted fried chicken, made the way it should be. Since 2025.
+              Hand crafted fried chicken, made the way it should be. Since 2026.
             </p>
             <div className="mt-6 flex gap-3">
               {[Instagram, Facebook, Twitter].map((I, i) => (
