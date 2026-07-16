@@ -1356,10 +1356,15 @@ function Footer() {
       <div className="relative mx-auto max-w-7xl px-5 md:px-10">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
-            <Wordmark />
-            <p className="mt-5 max-w-sm text-sm text-ivory/60 leading-relaxed">
-              Hand crafted fried chicken, made the way it should be. Since 2026.
-            </p>
+            <div>
+              <h3 className="text-display text-gradient-gold text-3xl md:text-4xl leading-none">
+                Habibi
+              </h3>
+
+              <p className="mt-1 text-[11px] uppercase tracking-[0.45em] text-ivory/60 font-semibold">
+                FRIED CHICKEN
+              </p>
+            </div>
             <div className="mt-6 flex gap-3">
               {[Instagram, Facebook, Twitter].map((I, i) => (
                 <a
