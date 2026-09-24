@@ -848,28 +848,70 @@ const LOCATIONS = [
     name: "Koramangala · Bengaluru",
     address:
       "No 28,Ground Floor, Koramangala Industrial Layout, 5th Block, Koramangala, Bengaluru, Karnataka 560095",
-    hours: "11:00 AM — 11:00 PM",
+    hours: "11:30 AM — 01:00 AM",
     maps: "https://maps.app.goo.gl/rjhK3v1gkZAVYuKSA",
+  },
+  {
+    name: "Indranagar · (cloud Kitchen) Bengaluru",
+    address: "Indiranagar, 100 Feet Rd, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560008",
+    hours: "11:30 AM — 01:00 AM",
+    maps: "",
   },
   {
     name: "HRBR Layout · Bengaluru",
     address:
       "CLUB HOUSE, 418, 5th Main Rd, HRBR Layout 2nd Block, HRBR Layout, Kalyan Nagar, Bengaluru, Karnataka 560043",
-    hours: "11:00 AM — 11:00 PM",
+    hours: "11:30 AM — 01:00 AM",
     maps: "https://maps.app.goo.gl/47VGZEBcyz6dgrto9",
-  },
-  {
-    name: "Indranagar · (cloud Kitchen) Bengaluru",
-    address: "Indiranagar, 100 Feet Rd, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560008",
-    hours: "11:00 AM — 11:00 PM",
-    maps: "",
   },
   {
     name: "Sarjapura· (cloud Kitchen) Bengaluru",
     address:
       "1ST FLOOR, shree complex, 65/1a, Sarjapur Main Rd, Kaikondrahalli, Bengaluru, Karnataka 560035	",
-    hours: "11:00 AM — 11:00 PM",
+    hours: "11:30 AM — 01:00 AM",
     maps: "https://share.google/zYY7Az0H11NgJzt9M",
+  },
+  {
+    name: "Whitefield · Bengaluru",
+    address:
+      "Nallurahalli Main Rd, Whitefield, Bengaluru, Karnataka 560066",
+    hours: "11:30 AM — 01:00 AM",
+    maps: "https://maps.app.goo.gl/Z43NWMMAPzwpRDfa7",
+  },
+  {
+    name: "Yelahanka · Bengaluru",
+    address:
+      "Prestige Plaza, Yelahanka, New Town Main Road, Yelahanka Rd, Yelahanka, Bengaluru, Karnataka 560064",
+    hours: "11:30 AM — 01:00 AM",
+    maps: "https://maps.app.goo.gl/c46np1CZn6AYxKyy9",
+  },
+  {
+    name: "Akshay Nagar · Bengaluru",
+    address:
+      "14, DLF Rd, next to Royal Enfield servise center, Avani Shringeri Nagar, Bhagyalakshmi Avenue, Rukmaiah Layout, Hulimavu, Bengaluru, Karnataka 560076",
+    hours: "11:30 AM — 01:00 AM",
+    maps: "https://maps.app.goo.gl/7GFBrXsQjMpUwJj19",
+  },
+   {
+    name: "HSR · Bengaluru",
+    address:
+      "No 79, 1/2, Mangammanapalya Main Rd, Bommanahalli, Bengaluru, Karnataka 560068",
+    hours: "11:30 AM — 01:00 AM",
+    maps: "https://maps.app.goo.gl/7ZgfPSndsf4KoRMe8",
+  },
+   {
+    name: "Fraser Town · Bengaluru",
+    address:
+      "Opposite to Shariff Bhai, Ground & Mezzanine Floor, 16, Mosque Rd, Fraser Town, Bengaluru, Karnataka 560005",
+    hours: "11:30 AM — 01:00 AM",
+    maps: "https://maps.app.goo.gl/2htPzjj4KTzhy4sV7",
+  },
+   {
+    name: "Kanakpura · Bengaluru",
+    address:
+      "Kaggalipura, Karnataka 560082",
+    hours: "11:30 AM — 01:00 AM",
+    maps: "https://maps.app.goo.gl/mfWCRotwXHfqPAVV6",
   },
 ];
 
